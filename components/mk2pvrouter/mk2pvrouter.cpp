@@ -46,7 +46,7 @@ static int get_field(char *dest, char *buf_start, char *buf_end, int max_len) {
  * @param grp_len Length of the group.
  * @return uint8_t The calculated CRC value.
  */
-uint8_t calculate_crc_(const char *grp, int grp_len) {
+uint8_t Mk2PVRouter::calculate_crc_(const char *grp, int grp_len) {
   uint8_t crc_tmp = 0;
   for (int i = 0; i < grp_len - checksum_area_end_; i++) {
     crc_tmp += grp[i];

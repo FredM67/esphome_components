@@ -63,6 +63,7 @@ class Mk2PVRouter : public PollingComponent, public uart::UARTDevice {
   State state_{State::OFF};
 
   bool read_chars_until_(bool drop, uint8_t c);
+  uint8_t calculate_crc_(const char *grp, int grp_len);
   bool check_crc_(const char *grp, const char *grp_end);
   void publish_value_(const std::string &tag, const std::string &val);
 };
