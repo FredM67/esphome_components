@@ -142,12 +142,12 @@ void Mk2PVRouter::loop() {
     case State::ON:
       /* Dequeue chars until start frame (0x2) */
       if (read_chars_until_(true, START_FRAME))
-        state_ = START_FRAME_RECEIVED;
+        state_ = State::START_FRAME_RECEIVED;
       break;
     case State::START_FRAME_RECEIVED:
       /* Dequeue chars until end frame (0x3) */
       if (read_chars_until_(false, END_FRAME))
-        state_ = END_FRAME_RECEIVED;
+        state_ = State::END_FRAME_RECEIVED;
       break;
     case State::END_FRAME_RECEIVED:
       char *buf_finger;
