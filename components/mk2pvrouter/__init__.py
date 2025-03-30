@@ -3,8 +3,7 @@ from esphome.components import uart
 import esphome.config_validation as cv
 from esphome.const import CONF_ID
 
-CODEOWNERS = ["@0hax"]
-MULTI_CONF = True
+# CODEOWNERS = ["@0hax"]
 
 mk2pvrouter_ns = cg.esphome_ns.namespace("mk2pvrouter")
 Mk2PVRouter = mk2pvrouter_ns.class_("Mk2PVRouter", cg.PollingComponent, uart.UARTDevice)
@@ -19,7 +18,6 @@ MK2PVROUTER_LISTENER_SCHEMA = cv.Schema(
     }
 )
 
-
 CONFIG_SCHEMA = (
     cv.Schema(
         {
@@ -29,7 +27,6 @@ CONFIG_SCHEMA = (
     .extend(cv.polling_component_schema("5s"))
     .extend(uart.UART_DEVICE_SCHEMA)
 )
-
 
 async def to_code(config):
     var = cg.new_Pvariable(config[CONF_ID])
